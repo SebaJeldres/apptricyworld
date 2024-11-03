@@ -1,0 +1,28 @@
+/* App.css */
+html, body {
+  height: 100%; /* Asegúrate de que el cuerpo tenga una altura del 100% */
+  margin: 0; /* Eliminar márgenes predeterminados */
+}
+
+.App {
+  display: flex; /* Cambiar a Flexbox para un control más fácil del layout */
+  flex-direction: column; /* Alinear los elementos verticalmente */
+  min-height: 100vh; /* Hacer que el contenedor principal ocupe al menos el 100% de la altura de la ventana */
+}
+
+.header {
+  flex-shrink: 0; /* Evitar que el header se reduzca */
+}
+
+.Home {
+  flex: 1; /* Hacer que el contenido principal ocupe el espacio restante */
+}
+
+.Footer {
+  background-color: #282c34; /* Color de fondo del footer */
+  color: white; /* Color del texto del footer */
+  text-align: center; /* Centrar el texto */
+  padding: 10px; /* Espaciado interno en el footer */
+}
+
+

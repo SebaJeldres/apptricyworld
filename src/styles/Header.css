@@ -1,0 +1,72 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px; /* Ajusta el padding para que sea más compacto */
+  background-color: #282c34;
+  color: white;
+  height: 80px; /* Ajustar la altura según sea necesario */
+}
+
+.header h1 {
+  font-size: 1.5rem; /* Tamaño de fuente ajustado */
+  margin: 0; /* Asegúrate de que no haya margen */
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Espacio entre los enlaces */
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Centrar verticalmente los elementos */
+}
+
+.navbar-links li {
+  display: flex;
+  align-items: center; /* Centrar el ícono y el texto verticalmente */
+}
+
+.navbar-links a {
+  color: white; /* Color de los enlaces */
+  text-decoration: none; /* Sin subrayado */
+  display: flex; /* Alinear ícono y texto en una fila */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.navbar-links a:hover {
+  color: #61dafb; /* Cambiar color al pasar el cursor */
+}
+
+.search-container {
+  display: flex; /* Mostrar la barra de búsqueda y el ícono en fila */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.search-bar {
+  padding: 5px; /* Espaciado interno de la barra de búsqueda */
+  margin-left: 5px; /* Espacio entre el ícono y la barra de búsqueda */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  width: 150px; /* Ancho de la barra de búsqueda */
+  outline: none; /* Sin contorno al seleccionar */
+}
+
+.search-icon {
+  color: white; /* Color del ícono de búsqueda */
+  font-size: 1.2rem; /* Tamaño del ícono */
+}
+
+.navbar-links svg {
+  margin-right: 5px; /* Espaciado entre el ícono y el texto */
+  font-size: 1.2rem; /* Tamaño del ícono */
+}
+
+
+
+  

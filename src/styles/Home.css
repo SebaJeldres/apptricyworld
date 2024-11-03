@@ -1,0 +1,55 @@
+/* Home.css */
+.Home {
+  display: flex;
+  flex-direction: column; /* Asegurarse de que el contenido se apile verticalmente */
+  align-items: center; /* Centrar el contenido horizontalmente */
+  background-color: #3d4046; /* Fondo de la página */
+  padding-top: 0; /* Eliminar cualquier padding superior */
+  margin-top: 0; /* Asegurarse de que el carrusel esté pegado al header */
+}
+
+.carousel {
+  position: relative; /* Necesario para los botones */
+  width: 100%; /* Tamaño del carrusel */
+  height: 60vh; /* Altura del carrusel */
+  overflow: hidden; /* Ocultar cualquier contenido que desborde */
+  border: none; /* Sin bordes */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.carousel-image {
+  width: 100%; /* La imagen ocupa todo el ancho del carrusel */
+  height: 100%; /* La imagen ocupa toda la altura del carrusel */
+  object-fit: cover; /* Mantener la proporción de la imagen */
+  border: none; /* Sin bordes */
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%; /* Centrar verticalmente */
+  transform: translateY(-50%); /* Ajustar para centrar correctamente */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+  border: none; /* Sin borde */
+  border-radius: 50%; /* Bordes redondeados para botones */
+  cursor: pointer; /* Cambiar cursor al pasar por encima */
+  padding: 10px; /* Espaciado interno */
+  font-size: 24px; /* Tamaño de la flecha */
+  z-index: 1; /* Asegurarse de que el botón esté por encima de la imagen */
+}
+
+.carousel-button.left {
+  left: 10px; /* Posición izquierda */
+}
+
+.carousel-button.right {
+  right: 10px; /* Posición derecha */
+}
+
+.carousel-button:hover {
+  background-color: rgba(255, 255, 255, 1); /* Cambiar color al pasar el cursor */
+}
+
+
+
+  
+  
