@@ -67,6 +67,19 @@
   font-size: 1.2rem; /* Tamaño del ícono */
 }
 
+/* Header.css */
+.login-button {
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  color: #007bff; /* Color del texto */
+  text-decoration: underline; /* Subrayado para parecer un enlace */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  font-size: inherit; /* Hereda el tamaño de fuente */
+}
+
+.login-button:hover {
+  color: #0056b3; /* Color al pasar el mouse */
+}
 
 
   

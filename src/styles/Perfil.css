@@ -45,14 +45,15 @@
 
 .perfil-content {
     flex: 2;
-    background-color: #ffffff; /* Mantener blanco para el contenido */
+    background-color: #5c5f64; /* Mantener un fondo gris claro para el contenido */
     padding: 20px;
     border-radius: 8px;
+    color: white;
 }
 
 .user-info p {
     margin: 5px 0;
-    color: #333; /* Un color oscuro para el texto del usuario */
+    color: white; /* Un color blanco para el texto del usuario */
 }
 
 button {
@@ -84,7 +85,8 @@ button:hover {
 }
 
 .modal-content {
-    background-color: #635a5a; /* Fondo gris más oscuro para el modal */
+    background-color: #000000; /* Fondo negro para el modal */
+    color: #ffffff; /* Color del texto en blanco */
     padding: 20px;
     border-radius: 8px;
     width: 300px; /* Tamaño reducido del modal */
@@ -92,6 +94,10 @@ button:hover {
     display: flex; /* Cambiar a flex para centrar el contenido */
     flex-direction: column; /* Colocar los elementos en columna */
     align-items: center; /* Centrar horizontalmente */
+}
+
+.modal-content h2 {
+    color: #ffffff; /* Asegurarse de que el título del modal sea blanco */
 }
 
 .modal-content form {
@@ -104,13 +110,16 @@ button:hover {
 .modal-content form label {
     display: flex;
     flex-direction: column;
+    color: #ffffff; /* Color del texto de las etiquetas del formulario en blanco */
 }
 
 .modal-content form input {
     width: 100%;
     padding: 8px; /* Espaciado interno */
     border-radius: 4px;
-    border: 1px solid #ddd; /* Borde gris claro */
+    border: 1px solid #888888; /* Borde gris claro para contraste */
+    background-color: #444444; /* Fondo gris oscuro para los inputs */
+    color: #ffffff; /* Texto blanco en los inputs */
     font-size: 14px; /* Tamaño de fuente más pequeño */
 }
 
@@ -119,8 +128,8 @@ button:hover {
 .modal-content form button[type="button"] {
     grid-column: span 2; /* Hacer que ocupen ambas columnas */
     margin-top: 10px; /* Mayor margen superior para separación */
-    background-color: #4c4f54; /* Color de fondo de los botones */
-    color: #ffffff; /* Color del texto */
+    background-color: #333333; /* Fondo gris oscuro para los botones */
+    color: #ffffff; /* Texto blanco en los botones */
     border: none; /* Sin borde */
     padding: 10px; /* Espaciado interno */
     border-radius: 4px; /* Bordes redondeados */
@@ -129,7 +138,7 @@ button:hover {
 
 .modal-content form button[type="submit"]:hover,
 .modal-content form button[type="button"]:hover {
-    background-color: #5c5f64; /* Color al pasar el cursor */
+    background-color: #555555; /* Color más claro al pasar el cursor */
 }
 
 
