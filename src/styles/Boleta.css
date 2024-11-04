@@ -1,0 +1,82 @@
+/* Boleta.css */
+
+.boleta-page {
+    padding: 20px;
+    background-color: #3d4046; /* Fondo similar al Home */
+    color: #ffffff; /* Color del texto */
+}
+
+.boleta-contenedor {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor */
+    background-color: #4c4f54; /* Fondo del contenedor */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.datos-usuario {
+    margin-bottom: 20px; /* Espacio entre los datos del usuario y el contenido */
+}
+
+.datos-usuario h2 {
+    margin: 0 0 10px; /* Margen para el título */
+}
+
+.datos-usuario p {
+    margin: 5px 0; /* Margen entre las líneas de los datos */
+}
+
+.boleta-contenido {
+    display: flex; /* Usar flexbox para dos columnas */
+    justify-content: space-between; /* Espacio entre las columnas */
+}
+
+.productos-lista {
+    flex: 1; /* Columna de productos */
+    margin-right: 20px; /* Espacio entre columnas */
+}
+
+.producto-card {
+    background-color: #ffffff; /* Fondo de cada producto */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    color: #333; /* Color del texto */
+    display: flex; /* Usar flexbox para alinear el contenido */
+    flex-direction: column; /* Alinear el contenido en columna */
+}
+
+.detalles-pago {
+    flex: 1; /* Columna de detalles de pago */
+    background-color: #ffffff; /* Fondo blanco para el detalle */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.detalles-pago h2 {
+    margin-top: 0; /* Margen superior cero para el título */
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between; /* Separar los botones */
+    margin-top: 20px; /* Espacio superior para separar de otros elementos */
+}
+
+button {
+    background-color: #4c4f54;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px; /* Aumentar el padding lateral */
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1; /* Hacer que los botones ocupen el mismo espacio */
+    margin: 0 5px; /* Espacio entre los botones */
+}
+
+button:hover {
+    background-color: #5c5f64;
+}
+
+
+

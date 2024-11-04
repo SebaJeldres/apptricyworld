@@ -1,0 +1,142 @@
+/* Perfil.css */
+.perfil-page {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    background-color: #3d4046; /* Fondo similar al Home */
+}
+
+.perfil-menu {
+    flex: 1;
+    background-color: #4c4f54; /* Un tono más claro para el menú */
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff; /* Color del texto */
+}
+
+.perfil-menu h2 {
+    margin-bottom: 15px;
+    color: #ffffff; /* Color del encabezado */
+}
+
+.perfil-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.perfil-menu ul li {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #ffffff; /* Color del texto de los elementos del menú */
+}
+
+.orders-cards {
+    margin-top: 20px;
+}
+
+.order-card {
+    background-color: #e0e0e0; /* Puedes cambiar esto si deseas otro color */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    text-align: center;
+    color: black; /* Color del texto en las tarjetas de pedidos */
+}
+
+.perfil-content {
+    flex: 2;
+    background-color: #ffffff; /* Mantener blanco para el contenido */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.user-info p {
+    margin: 5px 0;
+    color: #333; /* Un color oscuro para el texto del usuario */
+}
+
+button {
+    margin-top: 10px;
+    background-color: #4c4f54; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+}
+
+button:hover {
+    background-color: #5c5f64; /* Color del botón al pasar el cursor */
+}
+
+/* Estilos para el modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro para más contraste */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Asegura que el modal esté en la parte superior */
+}
+
+.modal-content {
+    background-color: #635a5a; /* Fondo gris más oscuro para el modal */
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px; /* Tamaño reducido del modal */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    display: flex; /* Cambiar a flex para centrar el contenido */
+    flex-direction: column; /* Colocar los elementos en columna */
+    align-items: center; /* Centrar horizontalmente */
+}
+
+.modal-content form {
+    display: grid; /* Cambiar a grid para manejar columnas */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+    gap: 10px; /* Espacio entre los campos */
+    width: 100%; /* Asegura que el formulario ocupe todo el ancho */
+}
+
+.modal-content form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content form input {
+    width: 100%;
+    padding: 8px; /* Espaciado interno */
+    border-radius: 4px;
+    border: 1px solid #ddd; /* Borde gris claro */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+/* Botones al final del formulario */
+.modal-content form button[type="submit"],
+.modal-content form button[type="button"] {
+    grid-column: span 2; /* Hacer que ocupen ambas columnas */
+    margin-top: 10px; /* Mayor margen superior para separación */
+    background-color: #4c4f54; /* Color de fondo de los botones */
+    color: #ffffff; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+}
+
+.modal-content form button[type="submit"]:hover,
+.modal-content form button[type="button"]:hover {
+    background-color: #5c5f64; /* Color al pasar el cursor */
+}
+
+
+
+
+
+
+
+  
+  

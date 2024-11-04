@@ -1,0 +1,100 @@
+/* Catalogo.css */
+.catalogo-page {
+    padding: 20px;
+    background-color: #f4f4f4; /* Fondo similar al de Perfil */
+  }
+  
+  .catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 20px; /* Espacio entre las tarjetas */
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image {
+    width: 100%; /* Asegura que la imagen se ajuste a la tarjeta */
+    height: auto;
+    border-radius: 8px; /* Bordes redondeados para la imagen */
+  }
+  
+  .card h3 {
+    font-size: 1.2em;
+  }
+  
+  .card p {
+    font-size: 1em;
+    margin: 5px 0;
+  }
+  
+  .card-buttons {
+    margin-top: 10px; /* Espaciado entre los botones */
+  }
+  
+  .card button {
+    margin: 5px; /* Espaciado entre los botones */
+    background-color: #4c4f54; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+  }
+  
+  .card button:hover {
+    background-color: #5c5f64; /* Color del botón al pasar el cursor */
+  }
+  
+  /* Estilos para el modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 800px; /* Aumentado para acomodar las dos columnas */
+    display: flex; /* Usar flex para las columnas */
+  }
+  
+  .modal-left {
+    flex: 1; /* Primera columna para la imagen */
+    padding-right: 20px; /* Espaciado a la derecha de la imagen */
+  }
+  
+  .modal-right {
+    flex: 1; /* Segunda columna para los detalles */
+  }
+  
+  .modal-image {
+    width: 100%; /* Asegura que la imagen se ajuste al modal */
+    height: auto;
+    border-radius: 8px; /* Bordes redondeados para la imagen */
+  }
+  
+  .modal-content h2 {
+    margin: 0; /* Sin margen superior */
+  }
+  
+  .modal-content button {
+    margin-top: 10px;
+    padding: 8px;
+    margin: 3px;
+  }
+  
+  

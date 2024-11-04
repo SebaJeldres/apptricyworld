@@ -1,0 +1,46 @@
+/* src/styles/Nosotros.css */
+
+.nosotros-page {
+    padding: 20px;
+    background-color: #3d4046; /* Fondo similar al Home */
+    color: #ffffff; /* Color del texto */
+}
+
+.nosotros-contenedor {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor */
+}
+
+.parrafo {
+    margin-bottom: 20px; /* Espacio entre párrafos */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espacio entre campos */
+}
+
+label {
+    display: block; /* Etiquetas en bloque */
+    margin-bottom: 5px; /* Margen inferior de las etiquetas */
+}
+
+input, textarea {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+button {
+    background-color: #4c4f54;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5c5f64;
+}
+

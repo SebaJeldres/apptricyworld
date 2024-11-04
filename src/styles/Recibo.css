@@ -1,11 +1,12 @@
-/* Carrito.css */
-.carrito-page {
+/* Recibo.css */
+
+.recibo-page {
     padding: 20px;
     background-color: #3d4046; /* Fondo similar al Home */
     color: #ffffff; /* Color del texto */
 }
 
-.carrito-contenedor {
+.recibo-contenedor {
     max-width: 800px; /* Ancho máximo del contenedor */
     margin: 0 auto; /* Centrar el contenedor */
     background-color: #4c4f54; /* Fondo del contenedor */
@@ -13,7 +14,7 @@
     border-radius: 8px; /* Bordes redondeados */
 }
 
-.carrito-contenido {
+.recibo-contenido {
     display: flex; /* Usar flexbox para dos columnas */
     justify-content: space-between; /* Espacio entre las columnas */
 }
@@ -36,24 +37,9 @@
     background-color: #ffffff; /* Fondo blanco para el detalle */
     padding: 15px;
     border-radius: 8px;
-    color: black;
 }
 
-.botones {
-    display: flex;
-    justify-content: space-between; /* Separar los botones */
+img {
+    width: 50px; /* Tamaño del ícono */
+    height: 50px; /* Tamaño del ícono */
 }
-
-button {
-    background-color: #4c4f54;
-    color: #ffffff;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #5c5f64;
-}
-
