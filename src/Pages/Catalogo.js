@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Asegúrate de importar axios
+// src/Pages/Catalogo.js
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { CartContext } from '../context/CartContext'; // Asegúrate de ajustar la ruta según tu estructura
 import '../styles/Catalogo.css';
 
 function Catalogo() {
-  const [productos, setProductos] = useState([]); // Estado para almacenar productos
+  const [productos, setProductos] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mensaje, setMensaje] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart } = useContext(CartContext); // Accede a la función addToCart
 
-  // UseEffect para obtener productos de la API
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/productos'); // Cambia la URL según tu API
-        console.log('Productos obtenidos:', response.data); // Verifica la respuesta
+        const response = await axios.get('http://localhost:5000/api/productos');
         setProductos(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -32,6 +34,12 @@ function Catalogo() {
     setSelectedProduct(null);
   };
 
+  const handleAddToCart = (producto) => {
+    addToCart(producto);
+    setMensaje(`El producto ${producto.nombre} se ha añadido al carrito con éxito.`);
+    setIsModalOpen(true); // Abre el modal de éxito
+  };
+
   return (
     <div className="catalogo-page">
       <h1>Catálogo de Triciclos</h1>
@@ -44,12 +52,12 @@ function Catalogo() {
               <p>Precio: ${producto.precio}</p>
               <div className="card-buttons">
                 <button onClick={() => handleOpenModal(producto)}>Ver Detalles</button>
-                <button>Añadir al Carrito</button>
+                <button onClick={() => handleAddToCart(producto)}>Añadir al Carrito</button>
               </div>
             </div>
           ))
         ) : (
-          <p>No hay productos disponibles.</p> // Mensaje para el caso de que no haya productos
+          <p>No hay productos disponibles.</p>
         )}
       </div>
 
@@ -68,8 +76,19 @@ function Catalogo() {
               <p>Medidas: {selectedProduct.medidas}</p>
               <p>Descripción: {selectedProduct.descripcion}</p>
               <button onClick={handleCloseModal}>Cerrar Modal</button>
-              <button>Añadir al Carrito</button>
+              <button onClick={() => { handleAddToCart(selectedProduct); handleCloseModal(); }}>Añadir al Carrito</button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de éxito */}
+      {mensaje && (
+        <div className="mensaje-modal-overlay">
+          <div className="mensaje-modal">
+            <h2>Éxito</h2>
+            <p>{mensaje}</p>
+            <button onClick={() => setMensaje('')}>Cerrar</button>
           </div>
         </div>
       )}
@@ -78,6 +97,11 @@ function Catalogo() {
 }
 
 export default Catalogo;
+
+
+
+
+
 
 
 

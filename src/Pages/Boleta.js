@@ -1,12 +1,14 @@
 // src/pages/Boleta.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../context/CartContext'; // Asegúrate de ajustar la ruta según tu estructura
 import '../styles/Boleta.css'; // Asegúrate de que este archivo exista
 
 function Boleta() {
   const navigate = useNavigate();
+  const { cartItems } = useContext(CartContext); // Accede a los elementos del carrito
 
-  // Datos de ejemplo para el usuario y los productos en el carrito
+  // Datos de ejemplo para el usuario
   const usuario = {
     nombre_user: 'Juan',
     apellido: 'Pérez',
@@ -16,14 +18,8 @@ function Boleta() {
     idPedido: '123456',
   };
 
-  const productos = [
-    { id: 1, nombre: 'Triciclo 1', costo: 50 },
-    { id: 2, nombre: 'Triciclo 2', costo: 75 },
-    { id: 3, nombre: 'Triciclo 3', costo: 60 },
-  ];
-
-  // Calcular el total
-  const total = productos.reduce((acc, producto) => acc + producto.costo, 0);
+  // Calcular el total con los productos del carrito
+  const total = cartItems.reduce((acc, producto) => acc + (Number(producto.precio) || 0), 0); // Asegúrate de que precio sea un número
   const iva = total * 0.19; // 19% de IVA
   const envio = 5000; // Costo de envío
   const totalDefinitivo = total + iva + envio; // Total definitivo
@@ -42,12 +38,16 @@ function Boleta() {
         </div>
         <div className="boleta-contenido">
           <div className="productos-lista">
-            {productos.map((producto) => (
-              <div key={producto.id} className="producto-card">
-                <p><strong>{producto.nombre}</strong></p>
-                <p>Costo: ${producto.costo}</p>
-              </div>
-            ))}
+            {cartItems.length > 0 ? (
+              cartItems.map((producto) => (
+                <div key={producto.id} className="producto-card">
+                  <p><strong>{producto.nombre}</strong></p>
+                  <p>Costo: ${producto.precio}</p>
+                </div>
+              ))
+            ) : (
+              <p>No hay productos en el carrito.</p>
+            )}
           </div>
           <div className="detalles-pago">
             <h2>Detalles de Pago</h2>
@@ -60,7 +60,7 @@ function Boleta() {
         </div>
         <div className="botones">
           <button onClick={() => navigate('/catalogo')}>Añadir más productos</button>
-          <button onClick={() => navigate('/recibo', { state: { productos, totalDefinitivo, idPedido: usuario.idPedido, usuario } })}>Ir a pagar</button>
+          <button onClick={() => navigate('/recibo', { state: { productos: cartItems, totalDefinitivo, idPedido: usuario.idPedido, usuario } })}>Ir a pagar</button>
         </div>
       </div>
     </div>
@@ -68,6 +68,9 @@ function Boleta() {
 }
 
 export default Boleta;
+
+
+
 
 
 

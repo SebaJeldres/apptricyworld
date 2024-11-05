@@ -1,23 +1,22 @@
-// src/pages/Carrito.js
-import React from 'react';
+// src/Pages/Carrito.js
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Carrito.css'; // Asegúrate de que este archivo exista
+import { CartContext } from '../context/CartContext';
+import '../styles/Carrito.css';
 
 function Carrito() {
   const navigate = useNavigate();
+  const { cartItems } = useContext(CartContext);
 
-  // Datos de ejemplo para los productos en el carrito
-  const productos = [
-    { id: 1, nombre: 'Triciclo 1', costo: 50 },
-    { id: 2, nombre: 'Triciclo 2', costo: 75 },
-    { id: 3, nombre: 'Triciclo 3', costo: 60 },
-  ];
-
-  // Calcular el total
-  const total = productos.reduce((acc, producto) => acc + producto.costo, 0);
-  const iva = total * 0.19; // 19% de IVA
-  const envio = 5000; // Costo de envío
-  const totalDefinitivo = total + iva + envio; // Total definitivo
+  // Calcular el total asegurando que solo se sumen números
+  const total = cartItems.reduce((acc, producto) => {
+    const precio = Number(producto.precio); // Asegurarse de que es un número
+    return acc + (isNaN(precio) ? 0 : precio); // Solo sumar si es un número
+  }, 0);
+  
+  const iva = total * 0.19;
+  const envio = 5000;
+  const totalDefinitivo = total + iva + envio;
 
   return (
     <div className="carrito-page">
@@ -25,12 +24,16 @@ function Carrito() {
         <h1>Tu Carrito</h1>
         <div className="carrito-contenido">
           <div className="productos-lista">
-            {productos.map((producto) => (
-              <div key={producto.id} className="producto-card">
-                <p><strong>{producto.nombre}</strong></p>
-                <p>Costo: ${producto.costo}</p>
-              </div>
-            ))}
+            {cartItems.length > 0 ? (
+              cartItems.map((producto, index) => (
+                <div key={index} className="producto-card">
+                  <p><strong>{producto.nombre}</strong></p>
+                  <p>Costo: ${producto.precio}</p>
+                </div>
+              ))
+            ) : (
+              <p>No hay productos en el carrito.</p>
+            )}
           </div>
           <div className="detalles-pago">
             <h2>Detalles de Pago</h2>

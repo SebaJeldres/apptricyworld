@@ -24,12 +24,13 @@ function Login({ onClose, onLogin }) {
                 onLogin(response.data.user); // Llama a la función onLogin con los datos del usuario
                 onClose(); // Cierra el modal
             } else {
-                console.error('Error al iniciar sesión:', response.data.message);
-                alert(response.data.message); // Muestra el mensaje de error
+                const errorMessage = response.data.message || 'Error desconocido al iniciar sesión';
+                console.error('Error al iniciar sesión:', errorMessage);
+                alert(errorMessage); // Muestra el mensaje de error
             }
         } catch (error) {
-            console.error('Error al iniciar sesión:', error.message);
-            alert('Error al intentar iniciar sesión.'); // Muestra un mensaje de error genérico
+            console.error('Error al iniciar sesión:', error);
+            alert(error.response?.data?.message || 'Error al intentar iniciar sesión.'); // Muestra un mensaje de error específico o genérico
         }
     };
 
