@@ -51,50 +51,6 @@
     background-color: #5c5f64; /* Color del botón al pasar el cursor */
   }
   
-  /* Estilos para el modal */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 800px; /* Aumentado para acomodar las dos columnas */
-    display: flex; /* Usar flex para las columnas */
-  }
-  
-  .modal-left {
-    flex: 1; /* Primera columna para la imagen */
-    padding-right: 20px; /* Espaciado a la derecha de la imagen */
-  }
-  
-  .modal-right {
-    flex: 1; /* Segunda columna para los detalles */
-  }
-  
-  .modal-image {
-    width: 100%; /* Asegura que la imagen se ajuste al modal */
-    height: auto;
-    border-radius: 8px; /* Bordes redondeados para la imagen */
-  }
-  
-  .modal-content h2 {
-    margin: 0; /* Sin margen superior */
-  }
-  
-  .modal-content button {
-    margin-top: 10px;
-    padding: 8px;
-    margin: 3px;
-  }
+
   
   

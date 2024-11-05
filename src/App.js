@@ -5,8 +5,8 @@ import Header from './Pages/Header';
 import Footer from './Pages/Footer';
 import Home from './Pages/Home';
 import Perfil from './Pages/Perfil';
-import Carrito from './Pages/Carrito'; // Importa el componente de carrito
-import Catalogo from './Pages/Catalogo'; // Asegúrate de importar el catálogo si no lo has hecho
+import Carrito from './Pages/Carrito';
+import Catalogo from './Pages/Catalogo';
 import Boleta from './Pages/Boleta';
 import Recibo from './Pages/Recibo';
 import Nosotros from './Pages/Nosotros';
@@ -19,11 +19,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/perfil" element={<Perfil />} />
-          <Route path="/carrito" element={<Carrito />} /> {/* Ruta para el Carrito */}
-          <Route path="/catalogo" element={<Catalogo />} /> {/* Ruta para el Catalogo */}
-          <Route path="/Boleta" element={<Boleta />} /> {/* Ruta para el Catalogo */}
-          <Route path="/recibo" element={<Recibo />} /> {/* Ruta para el Catalogo */}
-          <Route path="/nosotros" element={<Nosotros />} /> {/* Ruta para el Catalogo */}
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/boleta" element={<Boleta />} />
+          <Route path="/recibo" element={<Recibo />} />
+          <Route path="/nosotros" element={<Nosotros />} />
         </Routes>
         <Footer />
       </div>
@@ -32,5 +32,6 @@ function App() {
 }
 
 export default App;
+
 
 

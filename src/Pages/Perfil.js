@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../styles/Perfil.css';
 
 function Perfil() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setUserData] = useState({
-    nombre: 'Juan',
-    apellido: 'Pérez',
-    username: 'juanperez123',
-    id: '001',
-    direccion: 'Av. Siempre Viva 123',
-    telefono: '1234567890',
-    email: 'juan.perez@example.com',
-    pais: 'México',
+    nombre: '',
+    apellido: '',
+    username: '',
+    id: '',
+    direccion: '',
+    telefono: '',
+    email: '',
+    pais: '',
   });
 
   const [formData, setFormData] = useState(userData);
+
+  // Fetch user data from the API when the component mounts
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/usuarios/001'); // Ajusta la URL según tu API
+        setUserData(response.data);
+        setFormData(response.data);
+      } catch (error) {
+        console.error('Error al obtener los datos del usuario:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -24,10 +40,15 @@ function Perfil() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setUserData(formData);
-    handleCloseModal();
+    try {
+      await axios.put(`http://localhost:5000/api/usuarios/${formData.id}`, formData); // Ajusta la URL según tu API
+      setUserData(formData);
+      handleCloseModal();
+    } catch (error) {
+      console.error('Error al guardar los datos:', error);
+    }
   };
 
   return (
@@ -78,7 +99,7 @@ function Perfil() {
                 </label>
                 <label>
                   ID:
-                  <input type="text" name="id" value={formData.id} onChange={handleChange} />
+                  <input type="text" name="id" value={formData.id} onChange={handleChange} readOnly />
                 </label>
                 <label>
                   Dirección:
@@ -108,5 +129,6 @@ function Perfil() {
 }
 
 export default Perfil;
+
 
 
