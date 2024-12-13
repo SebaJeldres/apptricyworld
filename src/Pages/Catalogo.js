@@ -1,7 +1,6 @@
-// src/Pages/Catalogo.js
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import { CartContext } from '../context/CartContext'; // Asegúrate de ajustar la ruta según tu estructura
+import { CartContext } from '../context/CartContext';
+import supabase from '../supabaseClient';
 import '../styles/Catalogo.css';
 
 function Catalogo() {
@@ -9,15 +8,26 @@ function Catalogo() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mensaje, setMensaje] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { addToCart } = useContext(CartContext); // Accede a la función addToCart
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/productos');
-        setProductos(response.data);
+        // Consultar el producto con id = 1
+        const { data, error } = await supabase
+          .from('productos_chile')  // Asegúrate de que el nombre de la tabla sea correcto
+          .select('*')  // Seleccionamos todos los campos
+          .eq('id', 1);  // Filtro para obtener solo el producto con id = 1
+
+        if (error) {
+          console.error('Error fetching data from Supabase:', error);
+          return;
+        }
+
+        console.log('Producto obtenido:', data); // Verifica si el producto se obtiene correctamente
+        setProductos(data);  // Asignamos el producto a la variable de estado productos
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products from Supabase:', error); // Muestra cualquier error en la solicitud
       }
     };
 
@@ -37,7 +47,7 @@ function Catalogo() {
   const handleAddToCart = (producto) => {
     addToCart(producto);
     setMensaje(`El producto ${producto.nombre} se ha añadido al carrito con éxito.`);
-    setIsModalOpen(true); // Abre el modal de éxito
+    setIsModalOpen(true); 
   };
 
   return (
@@ -97,12 +107,3 @@ function Catalogo() {
 }
 
 export default Catalogo;
-
-
-
-
-
-
-
-
-
