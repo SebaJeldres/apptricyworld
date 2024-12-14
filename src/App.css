@@ -1,7 +1,11 @@
 /* App.css */
 html, body {
   height: 100%; /* Asegúrate de que el cuerpo tenga una altura del 100% */
-  margin: 0; /* Eliminar márgenes predeterminados */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #04A86B; /* Oculta cualquier contenido que sobresalga horizontalmente */
+   /* Eliminar márgenes predeterminados */
 }
 
 .App {
@@ -19,7 +23,7 @@ html, body {
 }
 
 .Footer {
-  background-color: #282c34; /* Color de fondo del footer */
+  background-color: #126865; /* Color de fondo del footer */
   color: white; /* Color del texto del footer */
   text-align: center; /* Centrar el texto */
   padding: 10px; /* Espaciado interno en el footer */

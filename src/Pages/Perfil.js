@@ -56,7 +56,6 @@ function Perfil() {
       <div className="perfil-menu">
         <h2>Mi Cuenta</h2>
         <ul>
-          <li>Datos Personales</li>
           <li>Pedidos</li>
         </ul>
         <div className="orders-cards">
@@ -81,48 +80,104 @@ function Perfil() {
         </div>
 
         {isModalOpen && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <h2>Modificar Datos</h2>
-              <form onSubmit={handleSubmit}>
-                <label>
-                  Nombre:
-                  <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} />
-                </label>
-                <label>
-                  Apellido:
-                  <input type="text" name="apellido" value={formData.apellido} onChange={handleChange} />
-                </label>
-                <label>
-                  Username:
-                  <input type="text" name="username" value={formData.username} onChange={handleChange} />
-                </label>
-                <label>
-                  ID:
-                  <input type="text" name="id" value={formData.id} onChange={handleChange} readOnly />
-                </label>
-                <label>
-                  Dirección:
-                  <input type="text" name="direccion" value={formData.direccion} onChange={handleChange} />
-                </label>
-                <label>
-                  Teléfono:
-                  <input type="text" name="telefono" value={formData.telefono} onChange={handleChange} />
-                </label>
-                <label>
-                  Email:
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} />
-                </label>
-                <label>
-                  País:
-                  <input type="text" name="pais" value={formData.pais} onChange={handleChange} />
-                </label>
-                <button type="submit">Guardar Cambios</button>
-                <button type="button" onClick={handleCloseModal}>Cancelar</button>
-              </form>
-            </div>
-          </div>
-        )}
+  <div className="modificar-modal-overlay">
+    <div className="modificar-modal-content">
+      <h2>Modificar Datos</h2>
+      <form className="modificar-form">
+        <div className="modificar-form-row">
+          <label className="modificar-label">
+            Nombre:
+            <input
+              className="modificar-input"
+              type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="modificar-label">
+            Apellido:
+            <input
+              className="modificar-input"
+              type="text"
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className="modificar-form-row">
+          <label className="modificar-label">
+            Username:
+            <input
+              className="modificar-input"
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="modificar-label">
+            Contraseña:
+            <input
+              className="modificar-input"
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className="modificar-form-row">
+          <label className="modificar-label">
+            Dirección:
+            <input
+              className="modificar-input"
+              type="text"
+              name="direccion"
+              value={formData.direccion}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="modificar-label">
+            Teléfono:
+            <input
+              className="modificar-input"
+              type="text"
+              name="telefono"
+              value={formData.telefono}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className="modificar-form-row">
+          <label className="modificar-label">
+            Email:
+            <input
+              className="modificar-input"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="modificar-label">
+            País:
+            <input
+              className="modificar-input"
+              type="text"
+              name="pais"
+              value={formData.pais}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <button className="modificar-submit-button" type="submit">Registrarse</button>
+      </form>
+    </div>
+  </div>
+)}
+
       </div>
     </div>
   );

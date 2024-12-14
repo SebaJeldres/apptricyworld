@@ -1,14 +1,23 @@
-/* Perfil.css */
+/* Perfil Page */
 .perfil-page {
     display: flex;
     padding: 20px;
     gap: 20px;
-    background-color: #3d4046; /* Fondo similar al Home */
+    background-color: #ffffff; /* Fondo blanco para la página */
+    color: #3d4046; /* Color del texto */
+}
+
+.perfil-contenedor {
+    max-width: 1000px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor */
+    background-color: #126865; /* Fondo similar al de la boleta */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
 }
 
 .perfil-menu {
     flex: 1;
-    background-color: #4c4f54; /* Un tono más claro para el menú */
+    background-color: #126865; /* Fondo más claro para el menú */
     padding: 20px;
     border-radius: 8px;
     color: #ffffff; /* Color del texto */
@@ -35,17 +44,18 @@
 }
 
 .order-card {
-    background-color: #e0e0e0; /* Puedes cambiar esto si deseas otro color */
+    background-color: #ffffff; /* Fondo blanco para las tarjetas de los pedidos */
     padding: 15px;
     margin: 10px 0;
     border-radius: 8px;
     text-align: center;
-    color: black; /* Color del texto en las tarjetas de pedidos */
+    color: #333; /* Color del texto en las tarjetas de pedidos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .perfil-content {
     flex: 2;
-    background-color: #5c5f64; /* Mantener un fondo gris claro para el contenido */
+    background-color: #126865; /* Fondo gris oscuro para el contenido */
     padding: 20px;
     border-radius: 8px;
     color: white;
@@ -53,10 +63,10 @@
 
 .user-info p {
     margin: 5px 0;
-    color: white; /* Un color blanco para el texto del usuario */
+    color: white; /* Color blanco para el texto del usuario */
 }
 
-button {
+.button-modificar {
     margin-top: 10px;
     background-color: #4c4f54; /* Color de fondo del botón */
     color: #ffffff; /* Color del texto del botón */
@@ -64,18 +74,84 @@ button {
     padding: 10px; /* Espaciado interno */
     border-radius: 4px; /* Bordes redondeados */
     cursor: pointer; /* Cambiar cursor al pasar por encima */
+    width: 100%; /* Hacer el botón de ancho completo */
 }
 
-button:hover {
+.button-modificar:hover {
     background-color: #5c5f64; /* Color del botón al pasar el cursor */
 }
 
+/* Modal de Modificar */
+.modificar-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro y semitransparente */
+    color: black;
+    z-index: 1000; /* Asegura que el overlay esté por encima del contenido */
+}
 
+.modificar-modal-content {
+    background-color: #126865; /* Fondo oscuro */
+    border-radius: 8px;
+    padding: 20px;
+    width: 500px;
+    height: auto; /* Se ajusta la altura automáticamente según el contenido */
+    color: white; /* Color del texto dentro del modal */
+}
 
+/* Asegura que el formulario también tenga el fondo y texto correctos */
+.modificar-form {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas */
+    gap: 12px; /* Espacio entre las filas y columnas */
+    color: white; /* Color blanco para los textos de las etiquetas */
+}
 
+/* Contenedor de las filas de formulario */
+.modificar-form-row {
+    display: flex;
+    flex-direction: column; /* Organiza las etiquetas encima de los inputs */
+    gap: 8px; /* Espacio entre la etiqueta y el input */
+    margin-bottom: 12px; /* Espacio entre las filas */
+    width: 48%; /* Hace que cada columna ocupe el 48% del ancho del formulario */
+}
 
+/* Asegura que las etiquetas tengan el formato adecuado */
+.modificar-label {
+    font-size: 14px;
+    color: white; /* Color de texto para las etiquetas */
+}
 
+/* Asegura que los inputs sean legibles con el fondo oscuro */
+.modificar-input {
+    border: 1px solid #ccc; /* Bordes claros */
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box; /* Asegura que padding no afecte el tamaño total */
+    height: 30px; /* Altura de los inputs */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    background-color: #f4f4f4; /* Fondo claro para los inputs */
+    color: #333; /* Color del texto de los inputs */
+}
 
+/* Botón de submit */
+.modificar-submit-button {
+    background-color: #555; /* Fondo oscuro para el botón */
+    color: white; /* Texto blanco en el botón */
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px; /* Espacio sobre el botón */
+    width: 100%; /* Botón de ancho completo */
+}
 
-  
-  
+.modificar-submit-button:hover {
+    background-color: #333; /* Efecto hover con un color más oscuro */
+}

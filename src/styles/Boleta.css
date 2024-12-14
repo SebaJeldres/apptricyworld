@@ -2,14 +2,14 @@
 
 .boleta-page {
     padding: 20px;
-    background-color: #3d4046; /* Fondo similar al Home */
-    color: #ffffff; /* Color del texto */
+    background-color: #ffffff; /* Fondo blanco para la página */
+    color: white; /* Color del texto */
 }
 
 .boleta-contenedor {
     max-width: 800px; /* Ancho máximo del contenedor */
     margin: 0 auto; /* Centrar el contenedor */
-    background-color: #4c4f54; /* Fondo del contenedor */
+    background-color: #126865; /* Fondo actualizado del contenedor */
     padding: 20px;
     border-radius: 8px; /* Bordes redondeados */
 }
@@ -22,7 +22,19 @@
     margin: 0 0 10px; /* Margen para el título */
 }
 
-.datos-usuario p {
+.usuario-datos-contenedor {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.usuario-dato {
+    flex: 1;
+    margin-right: 20px; /* Espacio entre las dos columnas */
+    min-width: 250px; /* Asegurar que las columnas tengan un tamaño mínimo */
+}
+
+.usuario-dato p {
     margin: 5px 0; /* Margen entre las líneas de los datos */
 }
 
@@ -77,6 +89,3 @@ button {
 button:hover {
     background-color: #5c5f64;
 }
-
-
-

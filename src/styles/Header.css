@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px; /* Ajusta el padding para que sea más compacto */
-  background-color: #282c34;
+  background-color: #126865;
   color: white;
   height: 80px; /* Ajustar la altura según sea necesario */
 }
@@ -63,7 +63,7 @@
   text-decoration: none; /* Subrayado para parecer un enlace */
   cursor: pointer; /* Cambia el cursor al pasar por encima */
   font-size: inherit;
-  background-color: #282c34; /* Hereda el tamaño de fuente */
+  background-color: #126865; /* Hereda el tamaño de fuente */
 }
 
 .login-button:hover {

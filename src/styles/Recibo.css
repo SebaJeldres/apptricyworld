@@ -2,14 +2,14 @@
 
 .recibo-page {
     padding: 20px;
-    background-color: #3d4046; /* Fondo similar al Home */
-    color: #ffffff; /* Color del texto */
+    background-color: #ffffff; /* Fondo blanco para la página */
+    color: white; /* Color del texto */
 }
 
 .recibo-contenedor {
     max-width: 800px; /* Ancho máximo del contenedor */
     margin: 0 auto; /* Centrar el contenedor */
-    background-color: #4c4f54; /* Fondo del contenedor */
+    background-color: #126865; /* Fondo actualizado del contenedor */
     padding: 20px;
     border-radius: 8px; /* Bordes redondeados */
 }
@@ -30,6 +30,8 @@
     margin: 10px 0;
     border-radius: 8px;
     color: #333; /* Color del texto */
+    display: flex; /* Usar flexbox para alinear el contenido */
+    flex-direction: column; /* Alinear el contenido en columna */
 }
 
 .detalles-pago {
@@ -39,7 +41,33 @@
     border-radius: 8px;
 }
 
+/* Si se agrega una imagen (íconos) */
 img {
     width: 50px; /* Tamaño del ícono */
     height: 50px; /* Tamaño del ícono */
+}
+
+/* Nuevos estilos para separar los datos en dos columnas */
+.datos-usuario {
+    margin-bottom: 20px; /* Espacio entre los datos del usuario y el contenido */
+}
+
+.datos-usuario h2 {
+    margin: 0 0 10px; /* Margen para el título */
+}
+
+.usuario-datos-contenedor {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.usuario-dato {
+    flex: 1;
+    margin-right: 20px; /* Espacio entre las dos columnas */
+    min-width: 250px; /* Asegurar que las columnas tengan un tamaño mínimo */
+}
+
+.usuario-dato p {
+    margin: 5px 0; /* Margen entre las líneas de los datos */
 }

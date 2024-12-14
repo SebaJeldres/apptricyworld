@@ -1,14 +1,14 @@
 /* Carrito.css */
 .carrito-page {
     padding: 20px;
-    background-color: #3d4046; /* Fondo similar al Home */
-    color: #ffffff; /* Color del texto */
+    background-color: #ffffff; /* Fondo blanco para la página */
+    color: white; /* Color del texto */
 }
 
 .carrito-contenedor {
     max-width: 800px; /* Ancho máximo del contenedor */
     margin: 0 auto; /* Centrar el contenedor */
-    background-color: #4c4f54; /* Fondo del contenedor */
+    background-color: #126865; /* Fondo actualizado del contenedor */
     padding: 20px;
     border-radius: 8px; /* Bordes redondeados */
 }
@@ -56,4 +56,3 @@ button {
 button:hover {
     background-color: #5c5f64;
 }
-

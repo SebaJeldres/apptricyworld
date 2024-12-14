@@ -1,4 +1,3 @@
-// src/pages/Boleta.js
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext'; // Asegúrate de ajustar la ruta según tu estructura
@@ -30,11 +29,17 @@ function Boleta() {
         <h1>Tu Boleta</h1>
         <div className="datos-usuario">
           <h2>Datos del Usuario</h2>
-          <p><strong>Nombre:</strong> {usuario.nombre_user} {usuario.apellido}</p>
-          <p><strong>Dirección:</strong> {usuario.direccion}</p>
-          <p><strong>Correo:</strong> {usuario.correo}</p>
-          <p><strong>Teléfono:</strong> {usuario.telefono}</p>
-          <p><strong>ID de Pedido:</strong> {usuario.idPedido}</p>
+          <div className="usuario-datos-contenedor">
+            <div className="usuario-dato">
+              <p><strong>Nombre:</strong> {usuario.nombre_user} {usuario.apellido}</p>
+              <p><strong>Correo:</strong> {usuario.correo}</p>
+              <p><strong>ID de Pedido:</strong> {usuario.idPedido}</p>
+            </div>
+            <div className="usuario-dato">
+              <p><strong>Dirección:</strong> {usuario.direccion}</p>
+              <p><strong>Teléfono:</strong> {usuario.telefono}</p>
+            </div>
+          </div>
         </div>
         <div className="boleta-contenido">
           <div className="productos-lista">
@@ -68,9 +73,3 @@ function Boleta() {
 }
 
 export default Boleta;
-
-
-
-
-
-
