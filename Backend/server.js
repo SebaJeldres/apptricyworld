@@ -1,5 +1,5 @@
 import express from 'express';
-import supabase from '../src/supabaseClient';
+import supabase from '../src/supabaseClient.mjs';
 // Asegúrate de que la ruta esté bien
 
 const app = express();

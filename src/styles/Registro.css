@@ -4,7 +4,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(142, 139, 139, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,40 +11,42 @@
 }
 
 .registro-modal-content {
-  background-color: #f8f8f8; /* Fondo claro */
+  background-color: #282c34; /* Fondo oscuro */
   border-radius: 8px;
   padding: 20px;
-  width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.registro-close-button {
-  background: transparent;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  width: 600px;
+  color: white;
+  
 }
 
 .registro-form {
   display: flex;
   flex-direction: column;
-  color: black;
+  gap: 8px; /* Espacio entre filas */
+  color: white;
 }
 
 .registro-form-row {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
+  gap: 2px; /* Espacio entre columnas */
+  margin-bottom: 7px; /* Espacio entre filas */
+  align-items: center; /* Alineación vertical */
+}
+
+.registro-label {
+  flex: 1; /* Hace que ambas columnas ocupen el mismo ancho */
+  display: flex;
+  flex-direction: column; /* Etiqueta encima del input */
+  font-size: 13px;
 }
 
 .registro-input {
   border: 1px solid #ccc; /* Bordes grises */
   border-radius: 4px;
   padding: 10px;
-  width: 48%; /* Ocupa el 48% del espacio para permitir dos columnas */
+  box-sizing: border-box; /* Asegura que padding no afecte el tamaño total */
+  height: 20px; /* Altura uniforme */
+  width: 100%; /* Asegura que los inputs ocupen el espacio completo de la columna */
 }
 
 .registro-submit-button {
@@ -55,10 +56,10 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 20px; /* Espacio encima del botón */
+  width: 100%; /* Botón con ancho completo */
 }
 
 .registro-submit-button:hover {
   background-color: #333; /* Color más oscuro al pasar el mouse */
 }
-
-  

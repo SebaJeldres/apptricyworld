@@ -19,13 +19,9 @@ function Header() {
 
     return (
         <header className="header"> 
-            <h1>TricyWorld</h1>
+            <h1 class="logo" ><Link to= "/">TricyWorld</Link></h1>
             <nav className="navbar">
                 <ul className="navbar-links">
-                    <li className="search-container">
-                        <FaSearch className="search-icon" />
-                        <input type="text" placeholder="Buscar..." className="search-bar" />
-                    </li>
                     <li><Link to="/">Inicio</Link></li>
                     <li><Link to="/nosotros">Nosotros</Link></li>
                     <li><Link to="/catalogo">Catálogo</Link></li>

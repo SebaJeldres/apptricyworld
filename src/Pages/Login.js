@@ -37,9 +37,9 @@ function Login({ onClose, onLogin }) {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button className="close-button" onClick={onClose}>X</button>
+                <form class="input_form" onSubmit={handleLoginSubmit}>
+                <button className="boton_cerrar" onClick={onClose}>x</button>
                 <h2>Inicia sesión aquí</h2>
-                <form onSubmit={handleLoginSubmit}>
                     <label>
                         Username:
                         <input type="text" name="username" value={formData.username} onChange={handleChange} required />
@@ -48,8 +48,8 @@ function Login({ onClose, onLogin }) {
                         Password:
                         <input type="password" name="password" value={formData.password} onChange={handleChange} required />
                     </label>
-                    <button type="submit">Ingresar</button>
-                    <button type="button" onClick={() => setIsRegisterOpen(true)}>Registrarse</button>
+                    <button class="button_login" type="submit">Ingresar</button>
+                    <button class="button_login" type="button" onClick={() => setIsRegisterOpen(true)}>Registrarse</button>
                 </form>
             </div>
             {isRegisterOpen && <Registro onClose={() => setIsRegisterOpen(false)} />} {/* Aquí se abre el modal de registro */}

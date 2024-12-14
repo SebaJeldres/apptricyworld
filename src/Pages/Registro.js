@@ -41,7 +41,7 @@ function Registro({ onClose }) {
   return (
     <div className="registro-modal-overlay">
       <div className="registro-modal-content">
-        <button className="registro-close-button" onClick={onClose}>X</button>
+      <button className="registro-close-button" onClick={onClose}>X</button>
         <h2 className="registro-title">Registrarse</h2>
         <form onSubmit={handleRegisterSubmit} className="registro-form">
           <div className="registro-form-row">

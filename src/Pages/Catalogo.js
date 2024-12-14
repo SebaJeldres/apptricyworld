@@ -72,8 +72,8 @@ function Catalogo() {
       </div>
 
       {isModalOpen && selectedProduct && (
-        <div className="modal-overlay">
-          <div className="modal-content">
+        <div className="catalogo-modal-overlay">
+          <div className="catalogo-modal-content">
             <div className="modal-left">
               <img src={selectedProduct.imagen} alt={selectedProduct.nombre} className="modal-image" />
             </div>
@@ -85,7 +85,7 @@ function Catalogo() {
               <p>Color: {selectedProduct.color}</p>
               <p>Medidas: {selectedProduct.medidas}</p>
               <p>Descripción: {selectedProduct.descripcion}</p>
-              <button onClick={handleCloseModal}>Cerrar Modal</button>
+              <button onClick={handleCloseModal}>Cerrar</button>
               <button onClick={() => { handleAddToCart(selectedProduct); handleCloseModal(); }}>Añadir al Carrito</button>
             </div>
           </div>

@@ -18,6 +18,14 @@
   display: flex;
 }
 
+.logo a{
+  color: white; /* Color de los enlaces */
+  text-decoration: none; /* Sin subrayado */
+  display: flex; /* Alinear ícono y texto en una fila */
+  align-items: center;
+}
+
+
 .navbar-links {
   list-style: none;
   display: flex;
@@ -43,25 +51,6 @@
   color: #61dafb; /* Cambiar color al pasar el cursor */
 }
 
-.search-container {
-  display: flex; /* Mostrar la barra de búsqueda y el ícono en fila */
-  align-items: center; /* Centrar verticalmente */
-}
-
-.search-bar {
-  padding: 5px; /* Espaciado interno de la barra de búsqueda */
-  margin-left: 5px; /* Espacio entre el ícono y la barra de búsqueda */
-  border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
-  width: 150px; /* Ancho de la barra de búsqueda */
-  outline: none; /* Sin contorno al seleccionar */
-}
-
-.search-icon {
-  color: white; /* Color del ícono de búsqueda */
-  font-size: 1.2rem; /* Tamaño del ícono */
-}
-
 .navbar-links svg {
   margin-right: 5px; /* Espaciado entre el ícono y el texto */
   font-size: 1.2rem; /* Tamaño del ícono */
@@ -69,16 +58,16 @@
 
 /* Header.css */
 .login-button {
-  background: none; /* Sin fondo */
   border: none; /* Sin borde */
-  color: #007bff; /* Color del texto */
-  text-decoration: underline; /* Subrayado para parecer un enlace */
+  color: white; /* Color del texto */
+  text-decoration: none; /* Subrayado para parecer un enlace */
   cursor: pointer; /* Cambia el cursor al pasar por encima */
-  font-size: inherit; /* Hereda el tamaño de fuente */
+  font-size: inherit;
+  background-color: #282c34; /* Hereda el tamaño de fuente */
 }
 
 .login-button:hover {
-  color: #0056b3; /* Color al pasar el mouse */
+  color: #61dafb; /* Color al pasar el mouse */
 }
 
 
