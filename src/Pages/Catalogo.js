@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import supabase from '../supabaseClient';
 import '../styles/Catalogo.css';
@@ -9,21 +10,21 @@ function Catalogo() {
   const [mensaje, setMensaje] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProductos = async () => {
       try {
         const { data, error } = await supabase
           .from('productos_chile')
-          .select('*')
-          .eq('id', 1);
+          .select('*'); // Se elimina el filtro .eq('id', 1) para obtener todos los productos
 
         if (error) {
           console.error('Error fetching data from Supabase:', error);
           return;
         }
 
-        console.log('Producto obtenido:', data);
+        console.log('Productos obtenidos:', data); // Verifica si los productos son correctos
         setProductos(data);
       } catch (error) {
         console.error('Error fetching products from Supabase:', error);
@@ -53,6 +54,7 @@ function Catalogo() {
     <div className="catalogo-page">
       <h1>Catálogo de Triciclos</h1>
       <div className="catalogo-container">
+        <button onClick={() => navigate('/crudProductos')}>Ir al crud de productos</button>
         <div className="catalogo-grid">
           {productos.length > 0 ? (
             productos.map((producto) => (
@@ -73,28 +75,27 @@ function Catalogo() {
       </div>
 
       {isModalOpen && selectedProduct && (
-          <div className="catalogo-modal-overlay">
-            <div className="catalogo-modal-content">
-              <div className="modal-left">
-                <img src={selectedProduct.imagen} alt={selectedProduct.nombre} className="modal-image" />
-              </div>
-              <div className="modal-right modal-text-content">
-                <h2>{selectedProduct.nombre}</h2>
-                <p>Precio: ${selectedProduct.precio}</p>
-                <p>Marca: {selectedProduct.marca}</p>
-                <p>Stock: {selectedProduct.stock}</p>
-                <p>Color: {selectedProduct.color}</p>
-                <p>Medidas: {selectedProduct.medidas}</p>
-                <p>Descripción: {selectedProduct.descripcion}</p>
-                <div className="modal-buttons">
-                  <button onClick={handleCloseModal}>Cerrar</button>
-                  <button onClick={() => { handleAddToCart(selectedProduct); handleCloseModal(); }}>Añadir al Carrito</button>
-                </div>
+        <div className="catalogo-modal-overlay">
+          <div className="catalogo-modal-content">
+            <div className="modal-left">
+              <img src={selectedProduct.imagen} alt={selectedProduct.nombre} className="modal-image" />
+            </div>
+            <div className="modal-right modal-text-content">
+              <h2>{selectedProduct.nombre}</h2>
+              <p>Precio: ${selectedProduct.precio}</p>
+              <p>Marca: {selectedProduct.marca}</p>
+              <p>Stock: {selectedProduct.stock}</p>
+              <p>Color: {selectedProduct.color}</p>
+              <p>Medidas: {selectedProduct.medidas}</p>
+              <p>Descripción: {selectedProduct.descripcion}</p>
+              <div className="modal-buttons">
+                <button onClick={handleCloseModal}>Cerrar</button>
+                <button onClick={() => { handleAddToCart(selectedProduct); handleCloseModal(); }}>Añadir al Carrito</button>
               </div>
             </div>
           </div>
-        )}
-
+        </div>
+      )}
 
       {mensaje && (
         <div className="mensaje-modal-overlay">

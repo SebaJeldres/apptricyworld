@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Asegúrate de importar Axios
+import supabase from '../supabaseClient'; // Asegúrate de importar el cliente de Supabase
 import '../styles/Registro.css';
 
 function Registro({ onClose }) {
@@ -23,25 +23,50 @@ function Registro({ onClose }) {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:5000/api/register', formData);
+      // Registrar al usuario con supabase
+      const { user, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+      });
 
-      if (response.status === 201) {
-        console.log("Usuario registrado:", response.data);
-        onClose(); // Cierra el modal al registrar exitosamente
-      } else {
-        console.error("Error al registrar usuario:", response.data);
-        alert(response.data.message || "Error en el registro");
+      if (error) {
+        throw new Error(error.message);
       }
+
+      // Si el usuario se ha creado exitosamente, agregar los datos adicionales (nombre, apellido, etc.)
+      const { data, error: insertError } = await supabase
+        .from('users') // Suponiendo que tienes una tabla 'users' para guardar información adicional
+        .insert([
+          {
+            nombre: formData.nombre,
+            apellido: formData.apellido,
+            username: formData.username,
+            password: formData.password,
+            direccion: formData.direccion,
+            telefono: formData.telefono,
+            pais: formData.pais,
+            email: formData.email,
+             // ID del usuario creado en Supabase
+          },
+        ]);
+
+      if (insertError) {
+        throw new Error(insertError.message);
+      }
+
+      console.log('Usuario registrado correctamente:', data);
+
+      onClose(); // Cerrar el modal al registrar exitosamente
     } catch (error) {
-      console.error("Error de red:", error);
-      alert(error.response?.data?.message || "Error de red, por favor intenta nuevamente.");
+      console.error('Error al registrar usuario:', error);
+      alert(error.message || 'Hubo un error en el registro.');
     }
   };
 
   return (
     <div className="registro-modal-overlay">
       <div className="registro-modal-content">
-      <button className="registro-close-button" onClick={onClose}>X</button>
+        <button className="registro-close-button" onClick={onClose}>X</button>
         <h2 className="registro-title">Registrarse</h2>
         <form onSubmit={handleRegisterSubmit} className="registro-form">
           <div className="registro-form-row">
@@ -92,12 +117,3 @@ function Registro({ onClose }) {
 }
 
 export default Registro;
-
-
-
-
-
-
-
-
-

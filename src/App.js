@@ -12,6 +12,7 @@ import Boleta from './Pages/Boleta';
 import Recibo from './Pages/Recibo';
 import Nosotros from './Pages/Nosotros';
 import { CartProvider } from './context/CartContext'; // Asegúrate de ajustar la ruta según tu estructura
+import CrudProductos from './Pages/CrudProductos';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/boleta" element={<Boleta />} />
             <Route path="/recibo" element={<Recibo />} />
             <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/crudProductos" element={<CrudProductos />} />
           </Routes>
           <Footer />
         </div>

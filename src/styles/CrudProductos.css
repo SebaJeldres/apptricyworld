@@ -1,0 +1,251 @@
+/* Página principal */
+.CrudProductos-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #3d4046; /* Texto principal */
+  }
+  
+  .CrudProductos-page h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #126865; /* Título en el tono principal */
+  }
+  
+  /* Contenedor de la tabla */
+  .tabla-productos {
+    width: 80%; /* Ocupa el 80% del ancho */
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+    border-collapse: collapse; /* Sin espacios entre bordes */
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Redondeo consistente */
+  }
+  
+  .tabla-productos th,
+  .tabla-productos td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd; /* Líneas divisorias */
+  }
+  
+  .tabla-productos th {
+    background-color: #126865; /* Cabecera con fondo oscuro */
+    color: white; /* Texto blanco */
+  }
+  
+  .tabla-productos tr:nth-child(even) {
+    background-color: #f4f4f4; /* Fila par con fondo gris claro */
+  }
+  
+  .tabla-productos tr:hover {
+    background-color: #e2f3f2; /* Efecto hover */
+  }
+  
+  .btn-detalles {
+    background-color: #126865;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn-detalles:hover {
+    background-color: #0f504f; /* Color más oscuro en hover */
+  }
+  
+  /* Modal de detalles */
+  .formulario-detalles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+  }
+  
+  .formulario-contenido {
+    background-color: #126865; /* Fondo principal */
+    padding: 20px;
+    border-radius: 8px;
+    width: 600px;
+    max-width: 90%; /* Adaptación para pantallas pequeñas */
+    color: white; /* Texto blanco */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  }
+  
+  /* Título del formulario */
+  .formulario-contenido h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Formulario */
+  .form-Crud {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Crea dos columnas iguales */
+    gap: 16px; /* Espacio entre columnas y filas */
+  }
+  
+  .label-Crud {
+    display: flex;
+    flex-direction: column; /* Coloca el texto sobre el input */
+    gap: 6px; /* Espacio entre el label y el input */
+    color: white; /* Texto blanco */
+  }
+  
+  .input-Crud {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f4f4f4; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+    width: 80%; /* Asegura que los inputs ocupen todo el ancho disponible */
+  }
+  
+  .input-Crud:disabled {
+    background-color: #ddd; /* Fondo más claro para inputs deshabilitados */
+    color: #666; /* Texto gris */
+  }
+  
+  /* Botones */
+  .botones-acciones {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1; /* Todos los botones ocupan el mismo ancho */
+  }
+  
+  .btn-eliminar {
+    background-color: #ff4d4d; /* Rojo para eliminar */
+    color: white;
+  }
+  
+  .btn-eliminar:hover {
+    background-color: #cc0000; /* Más oscuro en hover */
+  }
+  
+  .btn-modificar {
+    background-color: #4c4f54; /* Gris oscuro para modificar */
+    color: white;
+  }
+  
+  .btn-modificar:hover {
+    background-color: #333;
+  }
+  
+  .btn-cerrar {
+    background-color: #126865; /* Verde oscuro para cerrar */
+    color: white;
+  }
+  
+  .btn-cerrar:hover {
+    background-color: #0f504f;
+  }
+  
+  /* Estilos para el modal de agregar producto */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+  }
+  
+  .modal-contenido {
+    background-color: #126865;
+    padding: 20px;
+    border-radius: 8px;
+    width: 600px;
+    max-width: 90%; /* Adaptación para pantallas pequeñas */
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  }
+  
+  .modal-contenido h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  .modal-contenido .form-Crud {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .modal-contenido .label-Crud {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: white;
+  }
+  
+  .modal-contenido .input-Crud {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f4f4f4;
+    color: #333;
+    width: 80%;
+  }
+  
+  .modal-contenido .botones-acciones {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .modal-contenido button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+  }
+  
+  .modal-contenido .btn-agregar {
+    background-color: #4caf50; /* Verde para agregar */
+    color: white;
+  }
+  
+  .modal-contenido .btn-agregar:hover {
+    background-color: #388e3c; /* Más oscuro en hover */
+  }
+  
+  .modal-contenido .btn-cerrar {
+    background-color: #126865; /* Verde oscuro para cerrar */
+    color: white;
+  }
+  
+  .modal-contenido .btn-cerrar:hover {
+    background-color: #0f504f;
+  }
+  
