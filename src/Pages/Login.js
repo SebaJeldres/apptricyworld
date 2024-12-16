@@ -19,13 +19,12 @@ function Login({ onClose, onLogin }) {
         e.preventDefault();
 
         try {
-            // Hacer login en Supabase
             const { data, error } = await supabase
-                .from('users')  // Asegúrate de que esta tabla exista en tu base de datos
+                .from('users')
                 .select('*')
                 .eq('username', formData.username)
-                .eq('password', formData.password)  // O usa algún hash de la contraseña
-                .single(); // Nos aseguramos de obtener solo un resultado
+                .eq('password', formData.password)
+                .single();
 
             if (error || !data) {
                 throw new Error(error.message || 'Usuario o contraseña incorrectos');
@@ -33,13 +32,19 @@ function Login({ onClose, onLogin }) {
 
             console.log('Login exitoso:', data);
 
-            // Si el login es exitoso, pasamos los datos del usuario al parent
+            // Guardar datos en localStorage
+            localStorage.setItem('user', JSON.stringify(data));
+
+            // Pasar los datos del usuario al parent y cerrar el modal
             onLogin(data);
-            onClose(); // Cierra el modal
+            onClose();
+
+            // Recargar la página después del login
+            window.location.reload();
 
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
-            alert(error.message || 'Error al intentar iniciar sesión.'); // Muestra el mensaje de error
+            alert(error.message || 'Error al intentar iniciar sesión.');
         }
     };
 
@@ -79,7 +84,7 @@ function Login({ onClose, onLogin }) {
                     </button>
                 </form>
             </div>
-            {isRegisterOpen && <Registro onClose={() => setIsRegisterOpen(false)} />} {/* Aquí se abre el modal de registro */}
+            {isRegisterOpen && <Registro onClose={() => setIsRegisterOpen(false)} />}
         </div>
     );
 }

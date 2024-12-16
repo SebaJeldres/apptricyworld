@@ -14,6 +14,7 @@ import Nosotros from './Pages/Nosotros';
 import { CartProvider } from './context/CartContext'; // Asegúrate de ajustar la ruta según tu estructura
 import CrudProductos from './Pages/CrudProductos';
 
+
 function App() {
   return (
     <CartProvider>

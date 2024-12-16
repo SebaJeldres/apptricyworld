@@ -15,6 +15,19 @@ function CrudProductos() {
     stock: '',
     color: '',
   });
+  const [pais, setPais] = useState(''); // Para almacenar el país del usuario
+  const [language, setLanguage] = useState('es'); // Idioma por defecto
+  const [currency, setCurrency] = useState('MXN'); // Moneda por defecto
+  const [symbol, setSymbol] = useState('$'); // Símbolo de la moneda
+
+  // Mapa de países a configuraciones de idioma y moneda
+  const countryConfig = {
+    Chile: { language: 'es', currency: 'CLP', symbol: '$' },
+    Mexico: { language: 'es', currency: 'MXN', symbol: '$' },
+    España: { language: 'es', currency: 'EUR', symbol: '€' },
+    Brasil: { language: 'pt', currency: 'BRL', symbol: 'R$' },
+    Inglaterra: { language: 'en', currency: 'GBP', symbol: '£' },
+  };
 
   // Fetch productos desde la base de datos
   useEffect(() => {
@@ -33,6 +46,36 @@ function CrudProductos() {
 
     fetchProductos();
   }, []);
+
+  // Detectar el país del usuario
+  useEffect(() => {
+    const fetchUserCountry = async () => {
+      const savedUser = localStorage.getItem('user');
+      if (savedUser) {
+        const user = JSON.parse(savedUser);
+        // Asumimos que el usuario tiene un campo 'pais' en su perfil
+        const userCountry = user.pais;
+
+        setPais(userCountry);
+
+        if (countryConfig[userCountry]) {
+          setLanguage(countryConfig[userCountry].language);
+          setCurrency(countryConfig[userCountry].currency);
+          setSymbol(countryConfig[userCountry].symbol);
+        }
+      }
+    };
+
+    fetchUserCountry();
+  }, []);
+
+  // Formatear los precios según la configuración de moneda
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat(language, {
+      style: 'currency',
+      currency: currency,
+    }).format(value);
+  };
 
   const verDetalles = (producto) => {
     setProductoSeleccionado(producto);
@@ -129,15 +172,15 @@ function CrudProductos() {
 
   return (
     <div className="CrudProductos-page">
-      <h1>Gestión de Productos</h1>
+      <h1>{language === 'es' ? 'Gestión de Productos' : 'Product Management'}</h1>
       <table className="tabla-productos">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Marca</th>
-            <th>Acciones</th>
+            <th>{language === 'es' ? 'Nombre' : 'Name'}</th>
+            <th>{language === 'es' ? 'Precio' : 'Price'}</th>
+            <th>{language === 'es' ? 'Stock' : 'Stock'}</th>
+            <th>{language === 'es' ? 'Marca' : 'Brand'}</th>
+            <th>{language === 'es' ? 'Acciones' : 'Actions'}</th>
           </tr>
         </thead>
         <tbody>
@@ -145,35 +188,35 @@ function CrudProductos() {
             productos.map((producto) => (
               <tr key={producto.id}>
                 <td>{producto.nombre}</td>
-                <td>${producto.precio}</td>
+                <td>{formatCurrency(producto.precio)}</td>
                 <td>{producto.stock}</td>
                 <td>{producto.marca}</td>
                 <td>
                   <button className="btn-detalles" onClick={() => verDetalles(producto)}>
-                    Ver detalles
+                    {language === 'es' ? 'Ver detalles' : 'View details'}
                   </button>
                 </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="5">Cargando productos...</td>
+              <td colSpan="5">{language === 'es' ? 'Cargando productos...' : 'Loading products...'}</td>
             </tr>
           )}
         </tbody>
       </table>
 
       <button className="btn-agregar" onClick={() => setModalAbierto(true)}>
-        Agregar Producto
+        {language === 'es' ? 'Agregar Producto' : 'Add Product'}
       </button>
 
       {modalAbierto && (
         <div className="modal">
           <div className="modal-contenido">
-            <h2>Agregar Nuevo Producto</h2>
+            <h2>{language === 'es' ? 'Agregar Nuevo Producto' : 'Add New Product'}</h2>
             <form className="form-Crud">
               <label className="label-Crud">
-                Nombre:
+                {language === 'es' ? 'Nombre:' : 'Name:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -183,7 +226,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Precio:
+                {language === 'es' ? 'Precio:' : 'Price:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -193,7 +236,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Marca:
+                {language === 'es' ? 'Marca:' : 'Brand:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -203,7 +246,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Descripción:
+                {language === 'es' ? 'Descripción:' : 'Description:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -213,7 +256,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Medidas:
+                {language === 'es' ? 'Medidas:' : 'Dimensions:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -223,7 +266,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Stock:
+                {language === 'es' ? 'Stock:' : 'Stock:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -233,7 +276,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Color:
+                {language === 'es' ? 'Color:' : 'Color:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -245,10 +288,10 @@ function CrudProductos() {
             </form>
             <div className="botones-acciones">
               <button className="btn-agregar" onClick={agregarProducto}>
-                Agregar
+                {language === 'es' ? 'Agregar' : 'Add'}
               </button>
               <button className="btn-cerrar" onClick={cerrarFormulario}>
-                Cerrar
+                {language === 'es' ? 'Cerrar' : 'Close'}
               </button>
             </div>
           </div>
@@ -258,10 +301,10 @@ function CrudProductos() {
       {productoSeleccionado && (
         <div className="formulario-detalles">
           <div className="formulario-contenido">
-            <h2>Detalles del Producto</h2>
+            <h2>{language === 'es' ? 'Detalles del Producto' : 'Product Details'}</h2>
             <form className="form-Crud">
               <label className="label-Crud">
-                Nombre:
+                {language === 'es' ? 'Nombre:' : 'Name:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -271,7 +314,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Precio:
+                {language === 'es' ? 'Precio:' : 'Price:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -281,7 +324,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Marca:
+                {language === 'es' ? 'Marca:' : 'Brand:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -291,7 +334,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Descripción:
+                {language === 'es' ? 'Descripción:' : 'Description:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -301,7 +344,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Medidas:
+                {language === 'es' ? 'Medidas:' : 'Dimensions:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -311,7 +354,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Stock:
+                {language === 'es' ? 'Stock:' : 'Stock:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -321,7 +364,7 @@ function CrudProductos() {
                 />
               </label>
               <label className="label-Crud">
-                Color:
+                {language === 'es' ? 'Color:' : 'Color:'}
                 <input
                   className="input-Crud"
                   type="text"
@@ -333,13 +376,13 @@ function CrudProductos() {
             </form>
             <div className="botones-acciones">
               <button className="btn-modificar" onClick={modificarProducto}>
-                Modificar
+                {language === 'es' ? 'Modificar' : 'Modify'}
               </button>
               <button className="btn-eliminar" onClick={eliminarProducto}>
-                Eliminar
+                {language === 'es' ? 'Eliminar' : 'Delete'}
               </button>
               <button className="btn-cerrar" onClick={cerrarFormulario}>
-                Cerrar
+                {language === 'es' ? 'Cerrar' : 'Close'}
               </button>
             </div>
           </div>
