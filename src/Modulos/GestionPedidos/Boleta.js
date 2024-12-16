@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../context/CartContext'; 
-import '../styles/Boleta.css';
+import { CartContext } from '../../context/CartContext'; 
+import '../../styles/Boleta.css';
 
 function Boleta() {
   const navigate = useNavigate();

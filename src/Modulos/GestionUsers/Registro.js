@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import supabase from '../supabaseClient'; // Asegúrate de importar el cliente de Supabase
-import '../styles/Registro.css';
+import supabase from '../../supabaseClient.mjs'; // Asegúrate de importar el cliente de Supabase
+import '../../styles/Registro.css';
 
 function Registro({ onClose }) {
   const [formData, setFormData] = useState({

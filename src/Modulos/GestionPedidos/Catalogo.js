@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../context/CartContext';
-import supabase from '../supabaseClient';
-import '../styles/Catalogo.css';
+import { CartContext } from '../../context/CartContext';
+import supabase from '../../supabaseClient.mjs';
+import '../../styles/Catalogo.css';
 
 function Catalogo() {
   const [productos, setProductos] = useState([]);

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../context/CartContext'; // Asegúrate de que tienes un contexto de carrito
-import supabase from '../supabaseClient'; // Asegúrate de importar tu cliente de Supabase
-import '../styles/Carrito.css';
+import { CartContext } from '../../context/CartContext'; // Asegúrate de que tienes un contexto de carrito
+import supabase from '../../supabaseClient.mjs'; // Asegúrate de importar tu cliente de Supabase
+import '../../styles/Carrito.css';
 
 function Carrito() {
   const navigate = useNavigate();

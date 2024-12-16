@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import supabase from '../supabaseClient'; // Importa el cliente de Supabase
+import supabase from '../../supabaseClient.mjs';// Importa el cliente de Supabase
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import '../styles/Perfil.css';
+import '../../styles/Perfil.css';
 
 function Perfil() {
   const [isModalOpen, setIsModalOpen] = useState(false);

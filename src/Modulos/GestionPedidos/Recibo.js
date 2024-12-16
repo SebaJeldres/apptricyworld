@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../styles/Recibo.css'; 
+import '../../styles/Recibo.css'; 
 
 function Recibo() {
   const location = useLocation();

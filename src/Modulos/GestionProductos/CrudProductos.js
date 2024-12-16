@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import supabase from '../supabaseClient'; // Asegúrate de que la ruta sea correcta
-import '../styles/CrudProductos.css';
+import supabase from '../../supabaseClient.mjs'; // Asegúrate de que la ruta sea correcta
+import '../../styles/CrudProductos.css';
 
 function CrudProductos() {
   const [productos, setProductos] = useState([]);

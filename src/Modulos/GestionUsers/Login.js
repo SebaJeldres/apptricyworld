@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Registro from './Registro'; // Asegúrate de importar el nuevo componente
-import supabase from '../supabaseClient'; // Importa el cliente de Supabase
-import '../styles/Login.css';
+import supabase from '../../supabaseClient.mjs'; // Importa el cliente de Supabase
+import '../../styles/Login.css';
 
 function Login({ onClose, onLogin }) {
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
