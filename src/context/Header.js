@@ -7,38 +7,42 @@ import '../styles/Header.css';
 function Header() {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [user, setUser] = useState(null); // Estado para almacenar los datos del usuario
-    const navigate = useNavigate(); // hook de navegación
+    const navigate = useNavigate(); // Hook de navegación
 
     // Verificar si el usuario ya está logueado en el localStorage
     useEffect(() => {
         const savedUser = localStorage.getItem('user');
-        if (savedUser) {
-            setUser(JSON.parse(savedUser)); // Cargar el usuario desde localStorage
+        try {
+            const parsedUser = savedUser ? JSON.parse(savedUser) : null;
+            if (parsedUser && parsedUser.username) {
+                setUser(parsedUser); // Solo configura el usuario si los datos son válidos
+            }
+        } catch (error) {
+            console.error('Error parsing user data:', error);
+            localStorage.removeItem('user'); // Limpia datos corruptos
         }
     }, []);
 
     const handleOpenLogin = () => setIsLoginOpen(true);
     const handleCloseLogin = () => setIsLoginOpen(false);
+
     const handleLogin = (userData) => {
         setUser(userData); // Guarda los datos del usuario
+        localStorage.setItem('user', JSON.stringify(userData)); // Guarda en localStorage
+        window.location.reload(); // Redirige a la página principal o donde desees
     };
+
     const handleLogout = () => {
         setUser(null); // Elimina los datos del usuario
         localStorage.removeItem('user'); // Elimina los datos del usuario de localStorage
+        window.location.reload(); // Recargar la página para reflejar el cambio
     };
 
     const handleCartClick = (e) => {
         if (!user) {
-            // Si el usuario no está logueado, evitar el click
+            // Si el usuario no está logueado, redirige al login
             e.preventDefault();
-        }
-    };
-
-    const handleProfileClick = (e) => {
-        if (!user) {
-            // Si el usuario no está logueado, evita el acceso al perfil y abre el login
-            e.preventDefault();
-            handleOpenLogin();  // Abre el modal de login
+            handleOpenLogin();
         }
     };
 
@@ -60,20 +64,12 @@ function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link
-                            to="/perfil"
-                            onClick={handleProfileClick}
-                            className={`perfil-button ${!user ? 'disabled' : ''}`}
-                        >
-                            Perfil
-                        </Link>
-                    </li>
-                    <li>
                         {user ? (
-                            // Muestra el nombre de usuario si está logueado
-                            <span className="username">{user.username}</span>
+                            <div>
+                                <span className="username">{user.username}</span>
+                                <button onClick={handleLogout} className="logout-button">Cerrar sesión</button>
+                            </div>
                         ) : (
-                            // Si no está logueado, muestra el botón de Login
                             <button onClick={handleOpenLogin} className="login-button">Login</button>
                         )}
                     </li>

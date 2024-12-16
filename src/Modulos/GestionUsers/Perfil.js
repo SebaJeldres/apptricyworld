@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import supabase from '../../supabaseClient.mjs';// Importa el cliente de Supabase
+import supabase from '../../supabaseClient.mjs'; // Importa el cliente de Supabase
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import '../../styles/Perfil.css';
 
@@ -15,30 +15,24 @@ function Perfil() {
     email: '',
     pais: '',
   });
-
   const [formData, setFormData] = useState(userData);
   const navigate = useNavigate(); // Hook de navegación
 
-  // Fetch user data from localStorage when the component mounts
-  useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-        const parsedUser = JSON.parse(savedUser);
-        setUserData(parsedUser);
-        setFormData(parsedUser);  // Rellenar el formulario con los datos del usuario
-    } else {
-        console.log('No hay usuario logueado');
-    }
-  }, []);
+  // Verifica si hay un usuario logueado en localStorage cuando el componente se monta
 
+  // Función para abrir el modal de edición de datos
   const handleOpenModal = () => setIsModalOpen(true);
+  
+  // Función para cerrar el modal
   const handleCloseModal = () => setIsModalOpen(false);
 
+  // Función para manejar los cambios en los campos del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // Función para manejar el envío del formulario de edición de datos
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -53,25 +47,25 @@ function Perfil() {
           email: formData.email,
           pais: formData.pais,
         })
-        .eq('id', formData.id); // Actualizar el usuario con el id correspondiente
+        .eq('id', formData.id); // Actualiza el usuario por su ID
 
       if (error) {
         throw new Error(error.message);
       }
 
-      setUserData(formData);
-      handleCloseModal();
+      setUserData(formData); // Actualiza el estado con los nuevos datos
+      handleCloseModal(); // Cierra el modal de edición
     } catch (error) {
       console.error('Error al guardar los datos:', error);
     }
   };
 
+  // Función para manejar el cierre de sesión
   const handleLogout = () => {
-    localStorage.removeItem('user'); // Eliminar el usuario del localStorage
-    setUserData({}); // Restablecer el estado
-    setFormData({}); // Restablecer el formulario
-    navigate('/'); // Redirigir al Home
-    window.location.reload(); // Recargar la página
+    localStorage.removeItem('user'); // Elimina el usuario de localStorage
+    setUserData({}); // Restablece los datos del usuario
+    setFormData({}); // Restablece el formulario
+    navigate('/'); // Redirige a la página principal
   };
 
   return (
@@ -102,6 +96,7 @@ function Perfil() {
           <button onClick={handleLogout}>Cerrar sesión</button>
         </div>
 
+        {/* Modal para editar datos del usuario */}
         {isModalOpen && (
           <div className="modificar-modal-overlay">
             <div className="modificar-modal-content">
@@ -146,7 +141,7 @@ function Perfil() {
                       className="modificar-input"
                       type="password"
                       name="password"
-                      value={formData.password}
+                      value={formData.password || ''}
                       onChange={handleChange}
                     />
                   </label>

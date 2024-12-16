@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Registro from './Registro'; // Asegúrate de importar el nuevo componente
-import supabase from '../../supabaseClient.mjs'; // Importa el cliente de Supabase
+import Registro from './Registro'; // Importar el componente Registro
+import supabase from '../../supabaseClient.mjs'; // Cliente de Supabase
 import '../../styles/Login.css';
 
 function Login({ onClose, onLogin }) {
@@ -35,12 +35,12 @@ function Login({ onClose, onLogin }) {
             // Guardar datos en localStorage
             localStorage.setItem('user', JSON.stringify(data));
 
-            // Pasar los datos del usuario al parent y cerrar el modal
+            // Pasar los datos del usuario al componente padre y cerrar el modal
             onLogin(data);
             onClose();
 
-            // Recargar la página después del login
-            window.location.reload();
+            // Recargar la página después de iniciar sesión
+            window.location.reload(); // Recargar la página
 
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
@@ -48,11 +48,24 @@ function Login({ onClose, onLogin }) {
         }
     };
 
+    const handleCloseModal = () => {
+        onClose(); // Cerrar el modal de login
+    };
+
+    const handleOpenRegister = () => {
+        setIsRegisterOpen(true); // Abrir modal de registro
+    };
+
+    const handleCloseRegister = () => {
+        setIsRegisterOpen(false); // Cerrar modal de registro
+    };
+
     return (
         <div className="modal-overlay">
             <div className="modal-content">
                 <form className="input_form" onSubmit={handleLoginSubmit}>
-                    <button className="boton_cerrar" onClick={onClose}>x</button>
+                    {/* Botón de cerrar modal */}
+                    <button className="boton_cerrar" onClick={handleCloseModal}>x</button>
                     <h2>Inicia sesión aquí</h2>
                     <label>
                         Username:
@@ -78,13 +91,13 @@ function Login({ onClose, onLogin }) {
                     <button
                         className="button_login"
                         type="button"
-                        onClick={() => setIsRegisterOpen(true)}
+                        onClick={handleOpenRegister}
                     >
                         Registrarse
                     </button>
                 </form>
             </div>
-            {isRegisterOpen && <Registro onClose={() => setIsRegisterOpen(false)} />}
+            {isRegisterOpen && <Registro onClose={handleCloseRegister} />}
         </div>
     );
 }
